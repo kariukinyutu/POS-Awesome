@@ -23,7 +23,7 @@
                     :single-select="singleSelect"
                     show-select
                     v-model="selected"
-                  >
+                  >  
                     <template v-slot:item.posting_time="{ item }">
                       {{ item.posting_time.split('.')[0] }}
                     </template>
