@@ -548,6 +548,7 @@ def update_invoice(data):
         invoice_doc.set_posting_time = 1
 
     invoice_doc.save()
+    frappe.msgprint("Bill Reference Number Is {}".format(invoice_doc.custom_bill_reference_number))
     return invoice_doc
 
 
@@ -698,6 +699,8 @@ def set_batch_nos_for_bundels(doc, warehouse_field, throw=False):
 def redeeming_customer_credit(
     invoice_doc, data, is_payment_entry, total_cash, cash_account, payments
 ):
+    print("&"*80)
+    print(data)
     # redeeming customer credit with journal voucher
     today = nowdate()
     if data.get("redeemed_customer_credit"):
@@ -1456,7 +1459,9 @@ def get_item_attributes(item_code):
 @frappe.whitelist()
 def create_payment_request(doc):
     doc = json.loads(doc)
+    print(doc)
     for pay in doc.get("payments"):
+        print(pay)
         if pay.get("type") == "Phone":
             if pay.get("amount") <= 0:
                 frappe.throw(_("Payment amount cannot be less than or equal to 0"))

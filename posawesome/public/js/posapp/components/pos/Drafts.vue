@@ -84,6 +84,12 @@ export default {
         sortable: true,
       },
       {
+        text: __('Bill Reference Number'),
+        value: 'custom_bill_reference_number',
+        align: 'start',
+        sortable: true,
+      },
+      {
         text: __('Amount'),
         value: 'grand_total',
         align: 'end',
